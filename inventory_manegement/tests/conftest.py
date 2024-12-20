@@ -2,7 +2,7 @@ import pytest
 from rest_framework.test import APIClient
 from django.contrib.auth.models import User
 from django.urls import reverse
-from inventory_management.models import Item
+from inventory_manegement.models import Item
 
 @pytest.fixture
 def api_client():

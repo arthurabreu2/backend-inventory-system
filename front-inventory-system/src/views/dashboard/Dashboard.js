@@ -23,7 +23,6 @@ const Dashboard = () => {
   useEffect(() => {
     fetchItems()
 
-    // Connect to WebSocket for real-time updates
     wsRef.current = new WebSocket('ws://127.0.0.1:8000/ws/items/')
 
     wsRef.current.onopen = () => {
@@ -37,10 +36,10 @@ const Dashboard = () => {
         setItems(prevItems => {
           const index = prevItems.findIndex(i => i.id === updatedItem.id)
           if (index === -1) {
-            // If item not found, add it
+
             return [...prevItems, updatedItem]
           } else {
-            // If item exists, update it
+
             const newItems = [...prevItems]
             newItems[index] = updatedItem
             return newItems
@@ -92,10 +91,10 @@ const Dashboard = () => {
 
   const handleEdit = (id) => {
     console.log('Edit item:', id)
-    // Navigate to edit route or open a modal.
+
   }
 
-  // Group items by reorder_level
+
   const groupedItems = items.reduce((acc, item) => {
     const level = item.reorder_level
     if (!acc[level]) {
@@ -105,7 +104,7 @@ const Dashboard = () => {
     return acc
   }, {})
 
-  // Get available levels sorted
+
   const levels = Object.keys(groupedItems).map(Number).sort((a, b) => a - b)
 
   return (
